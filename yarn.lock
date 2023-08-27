@@ -673,6 +673,104 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.2.tgz#1205014625790c7ff0e471644a878a65d1e34ab0"
   integrity sha512-tcuhV7ncXBqbt/Ybf0IyrMcwVOAPDckMK9rXNHtF17UTK18OKLpg08glminN06pt2WCoALhXdLfSPbVvK/6fxw==
 
+"@formkit/core@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/core/-/core-0.19.0.tgz#7eb64e13e426edfdea1c3f9c82cb060561b2e9b5"
+  integrity sha512-7z+Ev7ZeFSULux62e3mTo+4TpREW2LrBkrfeoYZoYc1iexYFRxjkgqHS7Clkl15twUm67lq1XIRyvOvNTsJJrw==
+  dependencies:
+    "@formkit/utils" "0.19.0"
+
+"@formkit/dev@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/dev/-/dev-0.19.0.tgz#00a6fb077c3f849adde5e0d416357c6d8439924e"
+  integrity sha512-8M9oxQzynsv7e5+LrNj9uvf84UUBKCbdZUPN9H+Q/YHf0DZD+zhzhdIG6DDQfdxExLOSzODM4GOgUkD01U0qVg==
+  dependencies:
+    "@formkit/core" "0.19.0"
+    "@formkit/utils" "0.19.0"
+
+"@formkit/i18n@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/i18n/-/i18n-0.19.0.tgz#875736b0d33dc1ac6f5e06c239d90a23749e675b"
+  integrity sha512-K+9LffHtwTtjaFMZu/dNxPX6h2Ub1FCDv7Ivoja0WjI+GrerXu8ggS1n74F1aEEIx7e8ks0yexfQyXcaFyRdfQ==
+  dependencies:
+    "@formkit/core" "0.19.0"
+    "@formkit/utils" "0.19.0"
+    "@formkit/validation" "0.19.0"
+
+"@formkit/inputs@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/inputs/-/inputs-0.19.0.tgz#565e5374a06c8d47c1f7fdbf4fd54d1655c9149d"
+  integrity sha512-TDsM/VJNH8De6WYTKM7WyE/cVWcU67lj2vJAWjdI/2yUBspGu2gK+IJB6rVkWLuG8lcjyBmsvm7VlXfUlJ4SYg==
+  dependencies:
+    "@formkit/core" "0.19.0"
+    "@formkit/utils" "0.19.0"
+
+"@formkit/nuxt@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/nuxt/-/nuxt-0.19.0.tgz#5b4f1c59e4f6167f6f8a90e83e52f4df02ad7c93"
+  integrity sha512-jdki97n+5/y7LPLc2xJ90COZQhyuOLpqLcR/rvooNZN9vFo9RBIKrL0ysdpqqfO4cNE03lBCGyTT0xVYLBG0aA==
+  dependencies:
+    "@formkit/core" "0.19.0"
+    "@formkit/i18n" "0.19.0"
+    "@formkit/vue" "0.19.0"
+    "@nuxt/kit" "^3.5.3"
+    chokidar "^3.5.3"
+    pathe "^1.1.1"
+
+"@formkit/observer@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/observer/-/observer-0.19.0.tgz#8dd84ae095b9b2e56d7d08d0d746508df998b677"
+  integrity sha512-tCdQjsZNgoIqJGROa1fvuA/6t9VgtIxLlJ5vXhlxNi7pmu2BAFjhmdiDLo9PsVF/wEl3phaka8SbhlMj1Lborg==
+  dependencies:
+    "@formkit/core" "0.19.0"
+    "@formkit/utils" "0.19.0"
+
+"@formkit/rules@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/rules/-/rules-0.19.0.tgz#37ab9b9e2d2259e6e345e94109536ea6b6984dcf"
+  integrity sha512-Wscg7mYgafnxWKg7hsoC0Di2hIHbmu/mLm/sgbErODRLYAqyRFBDraMtYrhOuA2qx5JBOKIQrZDlo/G0LiQBIQ==
+  dependencies:
+    "@formkit/core" "0.19.0"
+    "@formkit/utils" "0.19.0"
+    "@formkit/validation" "0.19.0"
+
+"@formkit/themes@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/themes/-/themes-0.19.0.tgz#5437a6677820ffa2424542aed967c326d4d9ba87"
+  integrity sha512-6THhIYbxU9vyiV0s/CNq8g7XMXh2vLAgAHXNQTmBz/niNRwIyMSqrVT7Xq3jtsDuxPIGvknu4msWjL+RPogBZQ==
+  dependencies:
+    "@formkit/core" "0.19.0"
+
+"@formkit/utils@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/utils/-/utils-0.19.0.tgz#4bf37880b099d26b3577f810e54cd4bf0fb00382"
+  integrity sha512-XJn1KTMTXQuw6O/0LcEgClPmnhfcHLV+U7H4yefxc9cOEZKjacqTtojaJs756yxqBUg/JEHLoHfHoHJ9MvnH0w==
+
+"@formkit/validation@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/validation/-/validation-0.19.0.tgz#e9718714391a5940fcdd9e8d05437852e5c5d2b5"
+  integrity sha512-OdWHo9PmBtM4CMCf/bXc/RsyKW4W71PzQAb7Tcvj4B46JdkvS2Y/vD72OD9+OWL6JofG3g+9EEo2QCfDrpg8Xg==
+  dependencies:
+    "@formkit/core" "0.19.0"
+    "@formkit/observer" "0.19.0"
+    "@formkit/utils" "0.19.0"
+
+"@formkit/vue@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@formkit/vue/-/vue-0.19.0.tgz#9ae8e94e6b148adb914e391c71d0bd8ae72a87c9"
+  integrity sha512-OOKLbLpsfqU3BrGzre1Vg9T6/RvWhpRujoLE7Y0MTuE4iS52GTnOGWR2UmCLIUzUQBGxN7QqS+0N1y12KCH6LA==
+  dependencies:
+    "@formkit/core" "0.19.0"
+    "@formkit/dev" "0.19.0"
+    "@formkit/i18n" "0.19.0"
+    "@formkit/inputs" "0.19.0"
+    "@formkit/observer" "0.19.0"
+    "@formkit/rules" "0.19.0"
+    "@formkit/themes" "0.19.0"
+    "@formkit/utils" "0.19.0"
+    "@formkit/validation" "0.19.0"
+    vue "^3.3.4"
+
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
@@ -684,6 +782,18 @@
   integrity sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==
   dependencies:
     "@hapi/hoek" "^9.0.0"
+
+"@iconify/types@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
+  integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
+
+"@iconify/vue@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@iconify/vue/-/vue-4.1.1.tgz#c143c2973a4990ba2b47b766f80a9bca97937305"
+  integrity sha512-RL85Bm/DAe8y6rT6pux7D2FJSiUEM/TPfyK7GrbAOfTSwrhvwJW+S5yijdGcmtXouA8MtuH9C7l4hiSE4mLMjg==
+  dependencies:
+    "@iconify/types" "^2.0.0"
 
 "@ioredis/commands@^1.1.1":
   version "1.2.0"
@@ -1399,6 +1509,11 @@
   resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-1.20.2.tgz#97d26e00cd4a0423b4af620abecf3e6f442b7975"
   integrity sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==
 
+"@types/web-bluetooth@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@types/web-bluetooth/-/web-bluetooth-0.0.17.tgz#5c9f3c617f64a9735d7b72a7cc671e166d900c40"
+  integrity sha512-4p9vcSmxAayx72yn70joFoL44c9MO/0+iVEBIQXe3v2h2SiAsEIo/G5v6ObFWvNKRFjbrVadNf9LqEEZeQPzdA==
+
 "@types/webidl-conversions@*":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@types/webidl-conversions/-/webidl-conversions-7.0.0.tgz#2b8e60e33906459219aa587e9d1a612ae994cfe7"
@@ -1610,6 +1725,28 @@
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.3.4.tgz#06e83c5027f464eef861c329be81454bc8b70780"
   integrity sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==
+
+"@vueuse/core@^10.4.0":
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-10.4.0.tgz#99f1ce30d77a29726d6f736a4595281c2805c214"
+  integrity sha512-8JnnTwiuzUqfiYIW8H4FKG/g5ZMKSE+9auoFUwUAkzhqUjy24VbMkNlDBWetQCimiptx7RAO6u1IS55H6+p1Tg==
+  dependencies:
+    "@types/web-bluetooth" "^0.0.17"
+    "@vueuse/metadata" "10.4.0"
+    "@vueuse/shared" "10.4.0"
+    vue-demi ">=0.14.5"
+
+"@vueuse/metadata@10.4.0":
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-10.4.0.tgz#f35f322eeb540b620311726b82cdefa60e047afb"
+  integrity sha512-JNf9IR7ZBTDxWPfQlHhqBOv1VLO6ReTZi9HGY7RABjYHVpaEpjlHU7HpZDVOJGDa0gKITAbA2zMkNSBjKMcdaw==
+
+"@vueuse/shared@10.4.0":
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-10.4.0.tgz#09a245f85516c4bd47eeb5b7746b3c132e718553"
+  integrity sha512-52asvLf5cbAS/h6xWjqoY4MgjxmFjnVNf/nA8BP7RbeIrIGcf+BZbeOcVo+92byqArXEJiBxptXpufQvbwJL/w==
+  dependencies:
+    vue-demi ">=0.14.5"
 
 abbrev@1, abbrev@^1.0.0:
   version "1.1.1"
@@ -4292,6 +4429,11 @@ lodash@^4.17.14, lodash@^4.17.21:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
+logrocket@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/logrocket/-/logrocket-5.0.1.tgz#0a1c9fe39e6e39a401b34003b0dba37ffcd5640e"
+  integrity sha512-czWLcDkBJ+V/wooBQtPW76RAS2rszjsfkQumqPO3zPCQka8dcjsuGJxJhcxAuMZf5WDZd/zkvfDZCBJ6zeCQYg==
+
 lru-cache@^10.0.0, "lru-cache@^9.1.1 || ^10.0.0":
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.0.1.tgz#0a3be479df549cca0e5d693ac402ff19537a6b7a"
@@ -4615,7 +4757,7 @@ mongodb@5.7.0:
   optionalDependencies:
     saslprep "^1.0.3"
 
-mongoose@^7.3.2:
+mongoose@^7.3.2, mongoose@^7.4.5:
   version "7.4.5"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-7.4.5.tgz#7c843c6e3e8dcd22b0ff0f0981aca69b863e7723"
   integrity sha512-X7Mw7KHUYZmyOQmlu7D9TnZh/3vOrAYmZwEpXDU0VDvLPKT0T7PF6blwiv3aXOEMwv9T3rLTC9lJb3C5dWld2A==
@@ -4966,6 +5108,14 @@ nuxi@^3.7.0:
   integrity sha512-FZEwNCGeEdE+CyKCoThZm+Lv+u4TnbClTyYvvby3a2joK5t8nc7upNiZ7hsd+xoOeNuZW7CZHsQp9szJm2ev9Q==
   optionalDependencies:
     fsevents "~2.3.3"
+
+nuxt-icon@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/nuxt-icon/-/nuxt-icon-0.5.0.tgz#cdeeba91cc89160d08c3d176628a0e459eb9486c"
+  integrity sha512-ND4yh8kW4VyIbORP3cWjgVrOAvy6QSDFDTJltakdqmxVfVysNIs/bx2NzlkHeR1EOS8E/jVcemfTPmRsJ7WUVw==
+  dependencies:
+    "@iconify/vue" "^4.1.1"
+    "@nuxt/kit" "^3.6.5"
 
 nuxt-mongoose@^0.0.9:
   version "0.0.9"
@@ -6973,6 +7123,11 @@ vue-bundle-renderer@^2.0.0:
   dependencies:
     ufo "^1.2.0"
 
+vue-demi@>=0.14.5:
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.5.tgz#676d0463d1a1266d5ab5cba932e043d8f5f2fbd9"
+  integrity sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
+
 vue-devtools-stub@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/vue-devtools-stub/-/vue-devtools-stub-0.1.0.tgz#a65b9485edecd4273cedcb8102c739b83add2c81"
@@ -6984,6 +7139,11 @@ vue-router@^4.2.4:
   integrity sha512-9PISkmaCO02OzPVOMq2w82ilty6+xJmQrarYZDkjZBfl4RvYAlt4PKnEX21oW4KTtWfa9OuO/b3qk1Od3AEdCQ==
   dependencies:
     "@vue/devtools-api" "^6.5.0"
+
+vue3-carousel@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/vue3-carousel/-/vue3-carousel-0.3.1.tgz#d001be7dea416dc2f4e66afc4d56af66696dc117"
+  integrity sha512-86vUkNPBzL2PVuR9w6hUsI90ccFjLp+K8cSFpRTISf+SjUQY3fMHc5CFF5MUL62v1xYYm27zEBmQupO9VQx9Kw==
 
 vue@^3.3.4:
   version "3.3.4"
@@ -7088,6 +7248,7 @@ widest-line@^4.0.1:
     string-width "^5.0.1"
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
