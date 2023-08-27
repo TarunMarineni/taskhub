@@ -16,6 +16,6 @@
     "postcss": "^8.4.28"
   },
   "dependencies": {
-    "mongoose": "^7.4.5"
+    "nuxt-mongoose": "^0.0.9"
   }
 }
