@@ -40,7 +40,7 @@
         type="submit"
         name="sumbit"
         value="submit"
-        label="signin"
+        label="signup"
         :config="{
           classes:{
             input: 'w-full -auto bg-black text-center p-3 text-white mb-4 rounded-sm uppercase',
@@ -52,18 +52,20 @@
 </template>
 
 <script setup>
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-const submitForm = (value) => {
-  const { email, password } = value;
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-  const auth = getAuth();
+const submitForm = async (value) => {
+  const { email, password } = value
 
-  signInWithEmailAndPassword(auth, email, password)
+  const auth = getAuth()
+  const router = useRouter()
+
+  createUserWithEmailAndPassword(auth, email, password)
   .then(() => {
-    useRouter().push('/todo')
+    router.push('/todo')
   })
-  .catch(() => {
-    console.error(error.message)
+  .catch((error) =>{
+    console.error(error)
   })
 }
 </script>
