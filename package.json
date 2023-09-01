@@ -16,6 +16,13 @@
     "postcss": "^8.4.28"
   },
   "dependencies": {
-    "nuxt-mongoose": "^0.0.9"
+    "@formkit/nuxt": "^0.19.0",
+    "@vueuse/core": "^10.4.0",
+    "firebase": "^10.3.0",
+    "logrocket": "^5.0.1",
+    "mongoose": "^7.4.5",
+    "nuxt-icon": "^0.5.0",
+    "nuxt-mongoose": "^0.0.9",
+    "vue3-carousel": "^0.3.1"
   }
 }
