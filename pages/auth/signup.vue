@@ -62,7 +62,7 @@ const submitForm = async (value) => {
 
   createUserWithEmailAndPassword(auth, email, password)
   .then(() => {
-    router.push('/todo')
+    router.push('/')
   })
   .catch((error) =>{
     console.error(error)
