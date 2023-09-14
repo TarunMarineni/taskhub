@@ -1,9 +1,13 @@
 <template>
-  <div class="h-screen w-full">Home</div>
+  <div class="relative h-full w-full">
+    <add-todo class="absolute right-0 "/>
+  </div>
 </template>
 
 <script setup>
 definePageMeta({
-  middleware: ["check-auth"]
+  layout: 'main',
+  
+  middleware: ['check-auth'],
 })
 </script>

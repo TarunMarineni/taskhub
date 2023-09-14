@@ -60,7 +60,7 @@ const submitForm = (value) => {
 
   signInWithEmailAndPassword(auth, email, password)
   .then(() => {
-    useRouter().push('/todo')
+    useRouter().push('/')
   })
   .catch(() => {
     console.error(error.message)
