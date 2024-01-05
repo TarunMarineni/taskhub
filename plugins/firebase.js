@@ -8,8 +8,8 @@ export default defineNuxtPlugin(() => {
     storageBucket: "taskhub-9200f.appspot.com",
     messagingSenderId: "133981298400",
     appId: "1:133981298400:web:75e3a2d55b86c75e097a85",
-    measurementId: "G-6ELT6G10PM"
+    measurementId: "G-6ELT6G10PM",
   };
 
   initializeApp(firebaseConfig);
-})
+});

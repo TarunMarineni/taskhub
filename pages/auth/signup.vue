@@ -1,71 +1,54 @@
 <template>
-  <div class="w-full h-screen flex justify-center items-center">
-    <FormKit 
-      type="form"
-      :actions="false"
-      @submit="submitForm"
-      :config="{
-        classes: {
-          message: 'text-sm text-red-600',
-        }
-      }"
-    >
-      <FormKit
-        type="email"
-        name="email"
-        placeholder="Email"
-        validation="required | email"
-        :config="{
-          classes: {
-            input: 'border-gray-600 border-2 p-2 rounded-sm w-full',
-            outer: 'mb-4',
-            message: 'text-sm text-red-600'
-          }
-        }"
-      />
-      <FormKit
-        type="password"
-        name="password"
-        placeholder="Password"
-        validation="required"
-        :config="{
-          classes:{
-            input: 'border-gray-600 border-2 p-2 rounded-sm w-full',
-            message: 'text-sm text-red-600',
-            outer: 'mb-4'
-          }
-        }"
-      />
-      <FormKit 
-        type="submit"
-        name="sumbit"
-        value="submit"
-        label="signup"
-        :config="{
-          classes:{
-            input: 'w-full -auto bg-black text-center p-3 text-white mb-4 rounded-sm uppercase',
-          }
-        }"
-      />
-    </FormKit>
-  </div>
+  <UContainer class="w-auto h-screen grid grid-cols-1 lg:grid-cols-2 p-2">
+    <UCard class="">
+      <template #header> Signup Form </template>
+
+      <UForm id="form" :state="formState" class="" @submit="submitHandler">
+        <UFormGroup label="Email" class="">
+          <UInput v-model="formState.email" type="email" requiredå class="" />
+        </UFormGroup>
+
+        <UFormGroup label="Password" class="">
+          <UInput
+            v-model="formState.password"
+            type="password"
+            required
+            class=""
+          />
+        </UFormGroup>
+
+        <UButton type="submit" class="text-center"> Submit </UButton>
+        <UButton><NuxtLink to="/auth/signin">Signin</NuxtLink></UButton>
+      </UForm>
+    </UCard>
+  </UContainer>
 </template>
 
 <script setup>
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-const submitForm = async (value) => {
-  const { email, password } = value
+const formState = ref({
+  email: "",
+  password: "",
+});
 
-  const auth = getAuth()
-  const router = useRouter()
+const dataHere = ref({});
+
+const auth = getAuth();
+const submitHandler = (event) => {
+  const { email, password } = event.data;
 
   createUserWithEmailAndPassword(auth, email, password)
-  .then(() => {
-    router.push('/')
-  })
-  .catch((error) =>{
-    console.error(error)
-  })
-}
+    .then((userCredentials) => {
+      const user = userCredentials.user;
+
+      const userUid = auth.currentUser.uid;
+
+      useRouter().push("/tasks");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};
 </script>
