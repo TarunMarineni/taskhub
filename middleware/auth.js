@@ -6,12 +6,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
   onAuthStateChanged(auth, (user) => {
     if (!user) {
       signOut(auth).then(() => {
-        return navigateTo("auth/signin");
+        return navigateTo("/auth/signin");
       });
     }
   });
-
-  if (to.path == "auth/signin") {
-    signOut(auth);
-  }
 });

@@ -1,30 +1,29 @@
-<template>
-  <div>main</div>
-</template>
-
 <script setup>
-import { getAuth } from "firebase/auth";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  getFirestore,
-} from "firebase/firestore";
+import { useBoardStore } from "~/stores/boardStore";
+import { init } from "~/lib/init";
 
-const currentUserId = getAuth().currentUser.uid;
+const loader = ref(false);
 
-// Fetch all documents from the 'tasks' collection for the specific user
-const querySnapshot = await getDocs(
-  collection(doc(getFirestore(), "users", currentUserId), "tasks")
-);
-
-querySnapshot.forEach((doc) => {
-  console.log("Task ID:", doc.id);
-  console.log("Task Data:", doc.data());
+onMounted(() => {
+  loader.value = true;
 });
+
+await init();
+
+const boardStore = useBoardStore();
+console.log("Board Data:", boardStore.board);
+
+loader.value = false;
+
+useRouter().push("/tasks");
 
 definePageMeta({
   middleware: "auth",
 });
 </script>
+
+<template>
+  <div class="w-screen h-screen flex justify-center items-center bg-white">
+    <LoaderSpinner v-if="loader" />
+  </div>
+</template>

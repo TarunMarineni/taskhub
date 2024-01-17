@@ -1,38 +1,53 @@
 <template>
-  <UContainer class="w-auto h-screen grid grid-cols-1 lg:grid-cols-2 p-2">
-    <UCard class="">
-      <template #header> Signin </template>
+  <div class="w-screen h-screen flex bg-white">
+    <div class="h-full w-full justify-center items-center bg-white">
+      <UCard class="h-full w-full flex flex-col justify-center items-center">
+        <template #header> Signin </template>
 
-      <UForm id="form" :state="formState" class="" @submit="submitHandler">
-        <UFormGroup label="Email" class="">
-          <UInput
-            v-model="formState.email"
-            type="email"
-            requiredå
-            placeholder="tarun@gmail.com"
-            class=""
-          />
-        </UFormGroup>
+        <div class="w-96">
+          <UForm id="form" :state="formState" class="" @submit="submitHandler">
+            <UFormGroup label="Email" class="my-4">
+              <UInput
+                v-model="formState.email"
+                type="email"
+                requiredå
+                placeholder="tarun@gmail.com"
+                class=""
+              />
+            </UFormGroup>
 
-        <UFormGroup label="Password" class="">
-          <UInput
-            v-model="formState.password"
-            type="password"
-            required
-            placeholder="tarun@gmail.com"
-            class=""
-          />
-        </UFormGroup>
+            <UFormGroup label="Password" class="my-4">
+              <UInput
+                v-model="formState.password"
+                type="password"
+                required
+                placeholder="tarun@gmail.com"
+                class=""
+              />
+            </UFormGroup>
 
-        <UButton type="submit" class="text-center"> Submit </UButton>
-        <UButton><NuxtLink to="/auth/signup">Signup</NuxtLink></UButton>
-      </UForm>
-    </UCard>
+            <div class="w-full my-4">
+              <UButton type="submit" :block="true" class="w-full">
+                Submit
+              </UButton>
+            </div>
+          </UForm>
+          <UDivider label="New User?" color="gray" class="my-4" />
+
+          <UButton :block="true" class="">
+            <NuxtLink to="/auth/signup" class="w-full text-center"
+              >Signup</NuxtLink
+            >
+          </UButton>
+        </div>
+      </UCard>
+    </div>
+
     <div
-      class="hidden lg:block h-full w-full bg-no-repeat bg-center"
+      class="h-full md:block bg-white hidden rounded-md w-full bg-no-repeat bg-center"
       :style="{ 'background-image': `url('/18-06.png')` }"
     ></div>
-  </UContainer>
+  </div>
 </template>
 
 <script setup>
@@ -43,37 +58,27 @@ import {
   browserSessionPersistence,
 } from "firebase/auth";
 
+const router = useRouter();
+const auth = getAuth();
+
 const formState = ref({
   email: "",
   password: "",
 });
 
-const dataHere = ref({});
-
-const auth = getAuth();
-const submitHandler = (event) => {
+const submitHandler = async (event) => {
   const { email, password } = event.data;
 
   setPersistence(auth, browserSessionPersistence).then(() => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
-        const user = userCredentials;
-
-        const userUid = auth.currentUser.uid;
-
-        useRouter().push("/");
+        router.push("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      })
-      .catch((error) => {
-        // Handle persistence configuration errors
+        console.log("sign-in error:", error.message);
       });
   });
-};
 
-// definePageMeta({
-//   middleware: "auth",
-// });
+  router.replace("/");
+};
 </script>

@@ -1,85 +1,43 @@
-<template>
-  <div class="board-wrapper">
-    <UContainer class="my-8 w-full flex justify-center">
-      <UForm
-        id="add-card"
-        :state="formState"
-        class="w-96 flex justify-center items-center flex-col"
-        @submit="addCardHandler"
-      >
-        <UFormGroup class="mb-4 w-full" id="add-card-name">
-          <UInput v-model="formState.newCard" type="text" required class="" />
-        </UFormGroup>
-
-        <UButton type="submit" class="text-center w-24"> Add Card </UButton>
-      </UForm>
-    </UContainer>
-
-    <main class="board flex flex-nowrap w-full pr-4">
-      <UContainer
-        v-for="cards in boardStore.cards"
-        :key="cards.id"
-        class="column bg-white rounded-lg p-4 mx-4 w-96 flex-shrink-0"
-      >
-        <h2 class="mb-4 text-black font-bold text-xl uppercase">
-          {{ cards.name }}
-        </h2>
-        <ul>
-          <li v-for="task in cards.tasks" :key="task.id">
-            <UCard class="mb-4">
-              <strong>{{ task.name }}</strong>
-              <p>{{ task.description }}</p>
-            </UCard>
-          </li>
-        </ul>
-      </UContainer>
-    </main>
-    <div v-show="isModalOpen" class="task-bg" @click.self="closeModal">
-      <NuxtPage :key="route.fullPath" />
-    </div>
-  </div>
-</template>
-
 <script setup>
-import { useBoardStore } from "@/stores/boardStore";
-import { getAuth } from "firebase/auth";
-import { doc, addDoc, getFirestore, collection } from "firebase/firestore";
+import { useBoardStore } from "../stores/boardStore";
 
 const boardStore = useBoardStore();
 
-const route = useRoute();
-const router = useRouter();
+const newColumnName = ref("");
 
-const formState = ref({
-  newCard: "",
-});
-
-const addCardHandler = async (event) => {
-  const { newCard } = event.data;
-
-  const addDocRef = await addDoc(
-    collection(
-      doc(getFirestore(), "users", getAuth().currentUser.uid),
-      "tasks"
-    ),
-    {
-      name: newCard,
-    }
-  );
-
-  boardStore.addColumn({ name: newCard, id: addDocRef.id });
-  formState.value.newCard = "";
-};
-
-const isModalOpen = computed(() => {
-  return route.name === "index-tasks-id";
-});
-
-function closeModal() {
-  router.push("/");
+function addColumn() {
+  boardStore.addColumn(newColumnName.value);
+  newColumnName.value = "";
 }
 
 definePageMeta({
+  layout: "header",
   middleware: "auth",
 });
 </script>
+
+<template>
+  <div class="board-wrapper p-4 h-screen overflow-auto">
+    <main class="board flex flex-row items-start">
+      <BoardColumn
+        v-for="(column, columnIndex) in boardStore.board.columns"
+        :key="column.id"
+        :column="column"
+        :columnIndex="columnIndex"
+        class="flex-nowrap"
+      />
+
+      <div class="pr-4">
+        <UContainer class="column flex-1 p-8 rounded bg-gray-100 min-w-96">
+          <UInput
+            v-model="newColumnName"
+            type="text"
+            placeholder="Create new column"
+            icon="i-heroicons-plus-circle-solid"
+            @keyup.enter="addColumn"
+          />
+        </UContainer>
+      </div>
+    </main>
+  </div>
+</template>
