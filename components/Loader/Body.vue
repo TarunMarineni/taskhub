@@ -1,9 +1,27 @@
 <template>
-  <div class="flex items-center space-x-4">
-    <USkeleton class="h-12 w-12" :ui="{ rounded: 'rounded-full' }" />
-    <div class="space-y-2">
-      <USkeleton class="h-4 w-[250px]" />
-      <USkeleton class="h-4 w-[200px]" />
+  <div class="w-screen h-screen bg-white">
+    <USkeleton
+      class="h-14 w-screen flex justify-end items-center"
+      :ui="{ background: 'bg-gray-200 dark:bg-gray-200' }"
+    >
+    </USkeleton>
+    <div class="space-x-4 p-4 flex mt-4">
+      <USkeleton
+        class="h-[450px] w-96"
+        :ui="{ background: 'bg-gray-200 dark:bg-gray-200' }"
+      />
+      <USkeleton
+        class="h-[350px] w-96"
+        :ui="{ background: 'bg-gray-200 dark:bg-gray-200' }"
+      />
+      <USkeleton
+        class="h-[450px] w-96"
+        :ui="{ background: 'bg-gray-200 dark:bg-gray-200' }"
+      />
+      <USkeleton
+        class="h-[100px] w-96"
+        :ui="{ background: 'bg-gray-200 dark:bg-gray-200' }"
+      />
     </div>
   </div>
 </template>

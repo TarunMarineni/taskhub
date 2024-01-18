@@ -15,7 +15,7 @@
           type="text"
           v-model="column.name"
         />
-        <h2 class="text-black uppercase" v-else>{{ column.name }}</h2>
+        <h2 class="text-black text-xl" v-else>{{ column.name }}</h2>
       </div>
       <div>
         <UButton

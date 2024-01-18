@@ -53,7 +53,7 @@
 
             <div class="w-full my-4">
               <UButton type="submit" :block="true" class="w-full">
-                Signin
+                Signup
               </UButton>
             </div>
           </UForm>
@@ -79,10 +79,14 @@
 <script setup>
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useTitle } from "@vueuse/core";
+import boardData from "~/data/board.json";
+import { useBoardStore } from "~/stores/boardStore";
 
 onMounted(() => {
   const title = useTitle("TaskHub | Signup");
 });
+
+const boardStore = useBoardStore();
 
 const router = useRouter();
 const auth = getAuth();
@@ -99,7 +103,8 @@ const submitHandler = async (event) => {
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredentials) => {
-      router.replace("/");
+      boardStore.board = boardData;
+      router.replace("/tasks");
     })
     .catch((error) => {
       console.log("sign-up error:", error.message);

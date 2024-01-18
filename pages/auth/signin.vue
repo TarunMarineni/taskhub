@@ -1,10 +1,10 @@
 <template>
   <div class="w-screen h-screen flex bg-white">
-    <div class="h-full w-full justify-center items-center bg-white">
+    <div class="h-full w-full justify-center items-center">
       <UCard class="h-full w-full flex flex-col justify-center items-center">
         <template #header> Signin </template>
 
-        <div class="w-96">
+        <div class="w-96 p-0 m-0">
           <UForm
             id="form"
             :state="signinState"
@@ -38,7 +38,7 @@
 
           <UDivider label="New User?" color="gray" class="my-8" />
 
-          <UButton :block="true" class="">
+          <UButton :block="true">
             <NuxtLink to="/auth/signup" class="w-full text-center"
               >Signup</NuxtLink
             >
@@ -48,7 +48,7 @@
     </div>
 
     <div
-      class="h-full lg:block bg-white hidden rounded-md w-full bg-no-repeat bg-center"
+      class="h-full lg:block bg-white hidden p-0 m-0 rounded-md w-full bg-no-repeat bg-center"
       :style="{ 'background-image': `url('/18-06.png')` }"
     ></div>
   </div>
@@ -81,6 +81,7 @@ const submitHandler = async (event) => {
   setPersistence(auth, browserSessionPersistence).then(() => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
+        console.log("uid: ", userCredentials);
         router.push("/");
       })
       .catch((error) => {

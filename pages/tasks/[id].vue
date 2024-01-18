@@ -15,12 +15,19 @@
           <div class="w-96 lg:w-[500px]">
             <div class="flex items-center justify-between">
               <UFormGroup label="Name" class="w-full mb-4">
-                <UInput type="text" v-model="task.name" />
+                <UInput
+                  type="text"
+                  v-model="task.name"
+                  @change="isUpdated = true"
+                />
               </UFormGroup>
             </div>
 
             <UFormGroup label="Description" class="w-full mb-4">
-              <UTextarea v-model="task.description" />
+              <UTextarea
+                v-model="task.description"
+                @change="isUpdated = true"
+              />
             </UFormGroup>
 
             <div class="flex space-x-2 w-full justify-end">
@@ -47,7 +54,12 @@ const route = useRoute();
 const router = useRouter();
 const toast = useToast();
 
+onMounted(() => {
+  const title = useTitle("TaskHub | Tasks");
+});
+
 const isOpen = ref(true);
+const isUpdated = ref(null);
 
 const task = computed(() => {
   return boardStore.getTask(route.params.id);
@@ -65,12 +77,15 @@ function deleteTask() {
 }
 
 function updateTask() {
-  toast.add({
-    title: "Task Updates",
-    description: `${task.value.name} has been updated.`,
-    icon: "i-heroicons-save",
-    color: "green",
-  });
+  if (isUpdated.value) {
+    toast.add({
+      title: "Task Updates",
+      description: `${task.value.name} has been updated.`,
+      icon: "i-heroicons-save",
+      color: "green",
+    });
+    boardStore.updateBoardInFirestore();
+  }
   router.push("/tasks");
 }
 

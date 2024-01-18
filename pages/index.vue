@@ -1,34 +1,22 @@
+<template>
+  <LoaderBody />
+</template>
+
 <script setup>
-import { useBoardStore } from "~/stores/boardStore";
 import { init } from "~/lib/init";
 import { useTitle } from "@vueuse/core";
 
-onMounted(() => {
-  const title = useTitle("TaskHub");
-});
-
 const loader = ref(false);
 
-onMounted(() => {
+onMounted(async () => {
+  const title = useTitle("TaskHub");
   loader.value = true;
+  await init();
+  loader.value = false;
+  useRouter().push("/tasks");
 });
-
-await init();
-
-const boardStore = useBoardStore();
-console.log("Board Data:", boardStore.board);
-
-loader.value = false;
-
-useRouter().push("/tasks");
 
 definePageMeta({
   middleware: "auth",
 });
 </script>
-
-<template>
-  <div class="w-screen h-screen flex justify-center items-center bg-white">
-    <LoaderSpinner v-if="loader" />
-  </div>
-</template>

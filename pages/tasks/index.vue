@@ -2,7 +2,7 @@
   <Suspense>
     <div class="w-full h-screen relative">
       <header
-        class="flex h-14 fixed w-screen z-50 pr-4 justify-end items-center bg-white text-black"
+        class="flex fixed top-0 h-14 left-0 right-0 z-50 pr-4 justify-end items-center bg-white text-black"
       >
         <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
           <UAvatar icon="i-heroicons-photo" size="sm" />
@@ -67,11 +67,13 @@ const items = [
       click: () => {
         signOut(getAuth())
           .then(() => {
-            boardStore.board = null;
+            if (boardStore.board) {
+              boardStore.board = null;
+            }
             useRouter().push("/auth/signin");
           })
           .catch((error) => {
-            // An error happened.
+            console.log("error in tasks/index");
           });
       },
     },
@@ -79,7 +81,6 @@ const items = [
 ];
 
 definePageMeta({
-  // layout: "header",
   middleware: "auth",
 });
 </script>
