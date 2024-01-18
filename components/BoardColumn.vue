@@ -1,3 +1,69 @@
+<template>
+  <UContainer
+    class="column flex-1 p-4 mr-4 rounded bg-gray-200 min-w-96"
+    draggable="true"
+    @dragstart.self="pickupColumn($event, columnIndex)"
+    @dragenter.prevent
+    @dragover.prevent
+    @drop.stop="dropItem($event, { toColumnIndex: columnIndex })"
+  >
+    <div class="column-header flex items-center justify-between mb-3 font-bold">
+      <div>
+        <UInput
+          v-if="editNameState"
+          @change="boardStore.updateBoardInFirestore"
+          type="text"
+          v-model="column.name"
+        />
+        <h2 class="text-black uppercase" v-else>{{ column.name }}</h2>
+      </div>
+      <div>
+        <UButton
+          icon="i-heroicons-pencil-square"
+          class="mr-2"
+          @click="editNameState = !editNameState"
+        />
+        <UButton
+          icon="i-heroicons-trash"
+          color="red"
+          @click="deleteColumn(columnIndex)"
+        />
+      </div>
+    </div>
+    <ul>
+      <li v-for="(task, taskIndex) in column.tasks" :key="task.id">
+        <UCard
+          class="mb-4"
+          @click="goToTask(task.id)"
+          draggable="true"
+          @dragstart="
+            pickupTask($event, {
+              fromColumnIndex: columnIndex,
+              fromTaskIndex: taskIndex,
+            })
+          "
+          @drop.stop="
+            dropItem($event, {
+              toColumnIndex: columnIndex,
+              toTaskIndex: taskIndex,
+            })
+          "
+        >
+          <strong>{{ task.name }}</strong>
+          <p>{{ task.description }}</p>
+        </UCard>
+      </li>
+    </ul>
+    <UInput
+      v-model="newTaskName"
+      type="text"
+      placeholder="Create new task"
+      icon="i-heroicons-plus-circle-solid"
+      @keyup.enter="addTask"
+    />
+  </UContainer>
+</template>
+
 <script setup>
 import { useBoardStore } from "../stores/boardStore";
 
@@ -70,69 +136,3 @@ function pickupTask(event, { fromColumnIndex, fromTaskIndex }) {
   event.dataTransfer.setData("from-task-index", fromTaskIndex);
 }
 </script>
-
-<template>
-  <UContainer
-    class="column flex-1 p-4 mr-4 rounded bg-gray-200 min-w-96"
-    draggable="true"
-    @dragstart.self="pickupColumn($event, columnIndex)"
-    @dragenter.prevent
-    @dragover.prevent
-    @drop.stop="dropItem($event, { toColumnIndex: columnIndex })"
-  >
-    <div class="column-header flex items-center justify-between mb-3 font-bold">
-      <div>
-        <UInput
-          v-if="editNameState"
-          @change="boardStore.updateBoardInFirestore"
-          type="text"
-          v-model="column.name"
-        />
-        <h2 class="text-black uppercase" v-else>{{ column.name }}</h2>
-      </div>
-      <div>
-        <UButton
-          icon="i-heroicons-pencil-square"
-          class="mr-2"
-          @click="editNameState = !editNameState"
-        />
-        <UButton
-          icon="i-heroicons-trash"
-          color="red"
-          @click="deleteColumn(columnIndex)"
-        />
-      </div>
-    </div>
-    <ul>
-      <li v-for="(task, taskIndex) in column.tasks" :key="task.id">
-        <UCard
-          class="mb-4"
-          @click="goToTask(task.id)"
-          draggable="true"
-          @dragstart="
-            pickupTask($event, {
-              fromColumnIndex: columnIndex,
-              fromTaskIndex: taskIndex,
-            })
-          "
-          @drop.stop="
-            dropItem($event, {
-              toColumnIndex: columnIndex,
-              toTaskIndex: taskIndex,
-            })
-          "
-        >
-          <strong>{{ task.name }}</strong>
-          <p>{{ task.description }}</p>
-        </UCard>
-      </li>
-    </ul>
-    <UInput
-      v-model="newTaskName"
-      type="text"
-      placeholder="Create new task"
-      icon="i-heroicons-plus-circle-solid"
-      @keyup.enter="addTask"
-    />
-  </UContainer>
-</template>

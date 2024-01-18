@@ -9,5 +9,11 @@ export default defineNuxtRouteMiddleware((to, from) => {
         return navigateTo("/auth/signin");
       });
     }
+
+    if (to.path == "/auth/sign") {
+      signOut(auth).then(() => {
+        return navigateTo("/auth/signin");
+      });
+    }
   });
 });

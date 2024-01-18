@@ -23,6 +23,9 @@ const boardStore = useBoardStore();
 
 const items = [
   [
+    // {
+    //   label: getAuth().currentUser.email,
+    // },
     {
       label: "Signout",
       click: () => {

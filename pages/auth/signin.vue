@@ -5,34 +5,38 @@
         <template #header> Signin </template>
 
         <div class="w-96">
-          <UForm id="form" :state="formState" class="" @submit="submitHandler">
+          <UForm
+            id="form"
+            :state="signinState"
+            class=""
+            @submit="submitHandler"
+          >
             <UFormGroup label="Email" class="my-4">
               <UInput
-                v-model="formState.email"
+                v-model="signinState.email"
                 type="email"
                 requiredå
-                placeholder="tarun@gmail.com"
                 class=""
               />
             </UFormGroup>
 
             <UFormGroup label="Password" class="my-4">
               <UInput
-                v-model="formState.password"
+                v-model="signinState.password"
                 type="password"
                 required
-                placeholder="tarun@gmail.com"
                 class=""
               />
             </UFormGroup>
 
             <div class="w-full my-4">
               <UButton type="submit" :block="true" class="w-full">
-                Submit
+                Sigin
               </UButton>
             </div>
           </UForm>
-          <UDivider label="New User?" color="gray" class="my-4" />
+
+          <UDivider label="New User?" color="gray" class="my-8" />
 
           <UButton :block="true" class="">
             <NuxtLink to="/auth/signup" class="w-full text-center"
@@ -44,7 +48,7 @@
     </div>
 
     <div
-      class="h-full md:block bg-white hidden rounded-md w-full bg-no-repeat bg-center"
+      class="h-full lg:block bg-white hidden rounded-md w-full bg-no-repeat bg-center"
       :style="{ 'background-image': `url('/18-06.png')` }"
     ></div>
   </div>
@@ -57,11 +61,16 @@ import {
   setPersistence,
   browserSessionPersistence,
 } from "firebase/auth";
+import { useTitle } from "@vueuse/core";
+
+onMounted(() => {
+  const title = useTitle("TaskHub | Signin");
+});
 
 const router = useRouter();
 const auth = getAuth();
 
-const formState = ref({
+const signinState = ref({
   email: "",
   password: "",
 });

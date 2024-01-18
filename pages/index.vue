@@ -1,6 +1,11 @@
 <script setup>
 import { useBoardStore } from "~/stores/boardStore";
 import { init } from "~/lib/init";
+import { useTitle } from "@vueuse/core";
+
+onMounted(() => {
+  const title = useTitle("TaskHub");
+});
 
 const loader = ref(false);
 
