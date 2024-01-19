@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 import boardData from "~/data/board.json";
-import { setDoc, doc, getFirestore } from "firebase/firestore";
+import { setDoc, doc, getFirestore, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 export const useBoardStore = defineStore("boardStore", () => {
@@ -89,7 +89,7 @@ export const useBoardStore = defineStore("boardStore", () => {
    * Firestore
    */
   const updateBoardInFirestore = async () => {
-    const userBoardRf = await setDoc(
+    const userBoardRef = await updateDoc(
       doc(getFirestore(), "users", auth.currentUser.uid),
       {
         board: board.value,

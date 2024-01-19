@@ -1,5 +1,15 @@
 import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
 
 export const useUserStore = defineStore("UserStore", () => {
-  const userId = ref("");
+  const user = useStorage("user", {
+    uid: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+  });
+
+  return {
+    user,
+  };
 });

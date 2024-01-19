@@ -80,13 +80,23 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useTitle } from "@vueuse/core";
 import boardData from "~/data/board.json";
+import {
+  setDoc,
+  doc,
+  getFirestore,
+  collection,
+  addDoc,
+} from "firebase/firestore";
+
 import { useBoardStore } from "~/stores/boardStore";
+import { useUserStore } from "~/stores/userStore";
 
 onMounted(() => {
   const title = useTitle("TaskHub | Signup");
 });
 
 const boardStore = useBoardStore();
+const userStore = useUserStore();
 
 const router = useRouter();
 const auth = getAuth();
@@ -99,11 +109,29 @@ const signupState = ref({
 });
 
 const submitHandler = async (event) => {
-  const { email, password } = event.data;
+  const { email, password, firstName, lastName } = event.data;
 
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredentials) => {
+    .then(async (userCredentials) => {
+      const db = getFirestore();
+      const usersCollection = collection(db, "users");
+      const userDocRef = doc(usersCollection, auth.currentUser.uid);
+
+      await setDoc(userDocRef, {
+        user: { ...event.data, uid: userCredentials.user.uid },
+        board: boardData,
+      });
+
       boardStore.board = boardData;
+
+      const userData = {
+        uid: auth.currentUser.uid,
+        email: userCredentials.user.email,
+        firstName: firstName,
+        lastName: lastName,
+      };
+
+      userStore.user = userData;
       router.replace("/tasks");
     })
     .catch((error) => {
